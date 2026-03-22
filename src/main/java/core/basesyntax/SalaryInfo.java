@@ -8,12 +8,12 @@ public class SalaryInfo {
     private static final int NAME_INDEX = 1;
     private static final int HOURS_INDEX = 2;
     private static final int RATE_INDEX = 3;
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy");
     private static final String LINE_SEPARATOR = System.lineSeparator();
 
     public String getSalaryInfo(String[] names, String[] data, String dateFrom, String dateTo) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        LocalDate fromDate = LocalDate.parse(dateFrom, formatter);
-        LocalDate toDate = LocalDate.parse(dateTo, formatter);
+        LocalDate fromDate = LocalDate.parse(dateFrom, FORMATTER);
+        LocalDate toDate = LocalDate.parse(dateTo, FORMATTER);
         StringBuilder result = new StringBuilder(
                 "Report for period " + dateFrom + " - " + dateTo + LINE_SEPARATOR);
 
@@ -24,7 +24,7 @@ public class SalaryInfo {
                 String[] parts = record.split(" ");
                 String recordDate = parts[DATE_INDEX];
                 String recordName = parts[NAME_INDEX];
-                LocalDate currentDate = LocalDate.parse(recordDate, formatter);
+                LocalDate currentDate = LocalDate.parse(recordDate, FORMATTER);
                 boolean isAfterOrEqualDate = currentDate.isAfter(fromDate)
                         || currentDate.isEqual(fromDate);
                 boolean isBeforeOrEqualDate = currentDate.isBefore(toDate)
