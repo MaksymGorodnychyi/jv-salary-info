@@ -41,6 +41,7 @@ public class SalaryInfo {
             }
             result.append(name).append(" - ").append(totalSalary).append(LINE_SEPARATOR);
         }
+        result.setLength(result.length() - LINE_SEPARATOR.length());
         return result.toString();
     }
 }
