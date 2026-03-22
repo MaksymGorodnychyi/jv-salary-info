@@ -1,7 +1,7 @@
 package core.basesyntax;
 
-import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class SalaryInfo {
     private static final int DATE_INDEX = 0;
@@ -25,8 +25,10 @@ public class SalaryInfo {
                 String recordDate = parts[DATE_INDEX];
                 String recordName = parts[NAME_INDEX];
                 LocalDate currentDate = LocalDate.parse(recordDate, formatter);
-                boolean isAfterOrEqualDate = currentDate.isAfter(fromDate) || currentDate.isEqual(fromDate);
-                boolean isBeforeOrEqualDate = currentDate.isBefore(toDate) || currentDate.isEqual(toDate);
+                boolean isAfterOrEqualDate = currentDate.isAfter(fromDate)
+                        || currentDate.isEqual(fromDate);
+                boolean isBeforeOrEqualDate = currentDate.isBefore(toDate)
+                        || currentDate.isEqual(toDate);
                 int hours = Integer.parseInt(parts[HOURS_INDEX]);
                 int rate = Integer.parseInt(parts[RATE_INDEX]);
 
